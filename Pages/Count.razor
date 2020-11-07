@@ -1,0 +1,35 @@
+@page "/count"
+
+<h1>Расчет налога</h1>
+
+<table class="table">
+    <tr>
+        <th>Сумма платежа</th>
+        <th><input @bind="Principal" /></th>
+    </tr>
+    <tr>
+        <th>Налог</th>
+        <th><input @blind="Nds" />%</th>
+    </tr>
+    <tr>
+        <th>Всего:</th>
+        <th>@Total</th>
+    </tr>
+</table>
+
+<button class="btn btn-count" @onclick="Calculate">Вычислить</button>
+
+<img class="image1" img src="https://data2.1freewallpapers.com/download/devil-may-cry-4-dmc-4-character-960x540.jpg" width="200" height="200">
+
+@code
+{
+    private double Principal { get; set; } = 0;
+    private double Nds { get; set;} = 0;
+    private double total { get; set; } = 0;
+    private string Total { get; set; }
+    private void Calculate()
+    {
+        var total = Principal / 100 * Nds + Principal;
+        Total = total.ToString("C");
+    }
+}
